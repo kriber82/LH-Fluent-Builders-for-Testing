@@ -6,15 +6,23 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestEvaluateRequest(t *testing.T) {
+func TestEvaluateRequestForNiceChild(t *testing.T) {
+	niceChild := Child{"Alice Thomas", Nice, GiftRequest{"Bicycle", true, NiceToHave}}
 	service := SantaService{}
 
-	niceChild := Child{"Alice Thomas", Nice, GiftRequest{"Bicycle", true, NiceToHave}}
 	assert.True(t, service.EvaluateRequest(niceChild))
+}
 
+func TestEvaluateRequestForNaughtyChild(t *testing.T) {
 	naughtyChild := Child{"Noa Thierry", Naughty, GiftRequest{"SomeToy", true, Dream}}
-	assert.False(t, service.EvaluateRequest(naughtyChild))
+	service := SantaService{}
 
+	assert.False(t, service.EvaluateRequest(naughtyChild))
+}
+
+func TestEvaluateRequestForInfeasibleGift(t *testing.T) {
 	infeasibleGiftChild := Child{"Charlie Joie", Nice, GiftRequest{"AnotherToy", false, Dream}}
+	service := SantaService{}
+
 	assert.False(t, service.EvaluateRequest(infeasibleGiftChild))
 }
