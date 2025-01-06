@@ -1,0 +1,1 @@
+- remove getters or make fields private
