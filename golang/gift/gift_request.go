@@ -1,19 +1,27 @@
 package gift
 
 type GiftRequest struct {
-	GiftName   string
-	IsFeasible bool
-	Priority   Priority
+	giftName   string
+	isFeasible bool
+	priority   Priority
 }
 
-func (g *GiftRequest) GetGiftName() string {
-	return g.GiftName
+func NewGiftRequest(giftName string, isFeasible bool, priority Priority) *GiftRequest {
+	return &GiftRequest{
+		giftName:   giftName,
+		isFeasible: isFeasible,
+		priority:   priority,
+	}
 }
 
-func (g *GiftRequest) IsGiftFeasible() bool {
-	return g.IsFeasible
+func (g *GiftRequest) GiftName() string {
+	return g.giftName
 }
 
-func (g *GiftRequest) GetPriority() Priority {
-	return g.Priority
+func (g *GiftRequest) IsFeasible() bool {
+	return g.isFeasible
+}
+
+func (g *GiftRequest) Priority() Priority {
+	return g.priority
 }

@@ -1,27 +1,39 @@
 package gift
 
 type Child struct {
-	Name       string
-	Behavior   Behavior
-	GiftRequest GiftRequest
+	firstName   string
+	lastName    string
+	age         int
+	behavior    Behavior
+	giftRequest GiftRequest
 }
 
-func NewChild(firstName, lastName string, behavior Behavior, giftRequest GiftRequest) *Child {
+func NewChild(firstName, lastName string, age int, behavior Behavior, giftRequest GiftRequest) *Child {
 	return &Child{
-		Name:       firstName + " " + lastName,
-		Behavior:   behavior,
-		GiftRequest: giftRequest,
+		firstName:   firstName,
+		lastName:    lastName,
+		age:         age,
+		behavior:    behavior,
+		giftRequest: giftRequest,
 	}
 }
 
-func (c *Child) GetName() string {
-	return c.Name
+func (c *Child) FirstName() string {
+	return c.firstName
 }
 
-func (c *Child) GetBehavior() Behavior {
-	return c.Behavior
+func (c *Child) LastName() string {
+	return c.lastName
 }
 
-func (c *Child) GetGiftRequest() GiftRequest {
-	return c.GiftRequest
+func (c *Child) Age() int {
+	return c.age
+}
+
+func (c *Child) Behavior() Behavior {
+	return c.behavior
+}
+
+func (c *Child) GiftRequest() GiftRequest {
+	return c.giftRequest
 }

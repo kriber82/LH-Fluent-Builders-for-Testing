@@ -7,22 +7,25 @@ import (
 )
 
 func TestEvaluateRequestForNiceChild(t *testing.T) {
-	niceChild := Child{"Alice Thomas", Nice, GiftRequest{"Bicycle", true, NiceToHave}}
+	niceChild := NewChild("Alice", "Thomas", 9, Nice,
+		*NewGiftRequest("Bicycle", true, NiceToHave))
 	service := SantaService{}
 
-	assert.True(t, service.EvaluateRequest(niceChild))
+	assert.True(t, service.EvaluateRequest(*niceChild))
 }
 
 func TestEvaluateRequestForNaughtyChild(t *testing.T) {
-	naughtyChild := Child{"Noa Thierry", Naughty, GiftRequest{"SomeToy", true, Dream}}
+	naughtyChild := NewChild("Noa", "Thierry", 6, Naughty,
+		*NewGiftRequest("SomeToy", true, Dream))
 	service := SantaService{}
 
-	assert.False(t, service.EvaluateRequest(naughtyChild))
+	assert.False(t, service.EvaluateRequest(*naughtyChild))
 }
 
 func TestEvaluateRequestForInfeasibleGift(t *testing.T) {
-	infeasibleGiftChild := Child{"Charlie Joie", Nice, GiftRequest{"AnotherToy", false, Dream}}
+	infeasibleGiftChild := NewChild("Charlie", "Joie", 3, Nice,
+		*NewGiftRequest("AnotherToy", false, Dream))
 	service := SantaService{}
 
-	assert.False(t, service.EvaluateRequest(infeasibleGiftChild))
+	assert.False(t, service.EvaluateRequest(*infeasibleGiftChild))
 }
