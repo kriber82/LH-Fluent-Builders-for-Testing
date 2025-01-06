@@ -1,0 +1,1 @@
+Thanks to Yann Courtel & Yoan Thirion for providing the [original code](https://github.com/advent-of-craft/2024/tree/main/exercise/java/day09) for this kata as part of the awesome [Advent of Craft 2024](https://github.com/advent-of-craft/2024)!
